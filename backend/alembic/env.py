@@ -7,7 +7,7 @@ from alembic import context
 
 # ==== MY IMPORTS ====
 from app.database import Base
-from app.models import User  # type: ignore
+import app.models
 from app.core.config import settings
 
 # ====================
