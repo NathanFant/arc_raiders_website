@@ -1,0 +1,36 @@
+Build Order:
+1. Database Setup (do this first)
+
+Set up SQLAlchemy models
+Configure Alembic for migrations
+Create initial tables
+
+2. Authentication System (critical foundation)
+
+User model & registration
+Login/JWT tokens
+Password hashing
+Auth dependencies (for protecting routes)
+
+3. Basic CRUD patterns (learn the patterns)
+
+Start with something simple like a "User Profile" endpoint
+This teaches you the model → schema → route pattern
+
+4. Weapons/Gear Data (your actual content)
+
+Weapon models (stats, types, etc.)
+Seed the database with game data
+Read-only endpoints (no auth needed initially)
+
+5. Loadouts (ties it together)
+
+Loadout model (references weapons + user)
+CRUD operations (requires auth)
+This is where you use everything you built
+
+6. Social Features (polish)
+
+Voting/rating system
+Comments
+Popular/trending endpoints
