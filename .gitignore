@@ -4,22 +4,26 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 venv/
+env/
 .venv/
 *.egg-info/
 .env
-.env.local
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
 
 # Database
 *.db
 *.sqlite3
 
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
 # Logs
 *.log
+
+# OS
+.DS_Store
