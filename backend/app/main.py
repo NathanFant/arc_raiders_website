@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.v1 import auth
+
 app = FastAPI(
     title="Arc Raiders Loadout API",
     description="API for creating and sharing Arc Raiders loadouts",
@@ -15,6 +17,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Incude routers
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])
 
 
 # Health check endpoints
