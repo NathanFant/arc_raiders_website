@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: arc_raiders_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://arc_user:arc_password@db:5432/arc_raiders_db
+      - SECRET_KEY=your-secret-key-change-this-in-production
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - arc_network
+
+  db:
+    image: postgres:15-alpine
+    container_name: arc_raiders_db
+    environment:
+      POSTGRES_USER: arc_user
+      POSTGRES_PASSWORD: arc_password
+      POSTGRES_DB: arc_raiders_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-BASH", "pg_isready -U arc_user -d arc_raiders_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - arc_network
+
+volumes:
+  postgres_data:
+
+networks:
+  arc_network:
+    driver: bridge
