@@ -26,7 +26,7 @@ try:
         # Print one weapon as example
         if "items" in data and len(data["items"]) > 0:
             print(f"\nTotal weapons available: {data.get('total', 'unknown')}")
-            print(f"\nExample weapon:")
+            print("\nExample weapon:")
             print(json.dumps(data["items"][0], indent=2))
         else:
             print("\nFull response:")
