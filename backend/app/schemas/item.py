@@ -3,11 +3,11 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any
 
 
-class WeaponBase(BaseModel):
+class ItemBase(BaseModel):
     id: str
     name: str
     description: Optional[str] = None
-    item_type: str = "Weapon"
+    item_type: str = "Item"
     rarity: Optional[str] = None
     value: Optional[int] = None
     workbench: Optional[str] = None
@@ -17,7 +17,7 @@ class WeaponBase(BaseModel):
     flavor_text: Optional[str] = None
 
 
-class WeaponCreate(WeaponBase):
+class ItemCreate(ItemBase):
     stat_block: Dict[str, Any]
     loadout_slots: Optional[List[str]] = []
     locations: Optional[List[str]] = []
@@ -25,7 +25,7 @@ class WeaponCreate(WeaponBase):
     metaforge_updated_at: Optional[datetime] = None
 
 
-class Weapon(WeaponBase):
+class Item(ItemBase):
     stat_block: Dict[str, Any]
     loadout_slots: Optional[List[str]] = []
     locations: Optional[List[str]] = []
@@ -37,8 +37,8 @@ class Weapon(WeaponBase):
         from_attributes = True
 
 
-class WeaponList(BaseModel):
-    weapons: List[Weapon]
+class ItemList(BaseModel):
+    items: List[Item]
     total: int
     page: int
     limit: int
