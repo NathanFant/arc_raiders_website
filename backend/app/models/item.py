@@ -1,20 +1,20 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, JSON
+from sqlalchemy import Column, Integer, String, DateTime, JSON
 from sqlalchemy.sql import func
 from app.database import Base
 
 
-class Weapon(Base):
-    __tablename__ = "weapons"
+class Item(Base):
+    __tablename__ = "items"
 
     id = Column(String, primary_key=True, index=True)  # e.g., "anvil-i"
     name = Column(String, nullable=False, index=True)
     description = Column(String)
-    item_type = Column(String, default="Weapon")
+    item_type = Column(String, index=True)
     rarity = Column(String, index=True)  # Common, Uncommon, Rare, Epic, Legendary
     value = Column(Integer)  # Sell Value
     workbench = Column(String, nullable=True)
     subcategory = Column(String, nullable=True)  # Hand Cannon, Pistol, Rifle, etc.
-    ammo_type = Column(String, index=True)  # Light, Medium, Heavy, Launcher, Energy
+    ammo_type = Column(String, index=True)  # Light, Medium, Heavy, Launcher, etc
     icon = Column(String)  # URL to icon image
     flavor_text = Column(String, nullable=True)
 
